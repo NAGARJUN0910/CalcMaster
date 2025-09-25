@@ -1,1 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <!-- <link rel="stylesheet" href="Project-Calculator.css"> -->
+    <style>
+        /* Project-Calculator.css */
+
+/* Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    font-family: 'Roboto Mono', monospace;
+}
+
+/* Calculator Container */
+.calculator {
+    background: #0d1117;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+    width: 320px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* Input Field */
+.calculator input[type="text"] {
+    width: 100%;
+    padding: 20px;
+    border-radius: 12px;
+    border: none;
+    font-size: 1.5rem;
+    text-align: right;
+    color: #fff;
+    background: #1c1c1c;
+    box-shadow: inset 0 4px 6px rgba(0, 0, 0, 0.3);
+    transition: 0.3s ease;
+}
+
+.calculator input[type="text"]:focus {
+    outline: none;
+    box-shadow: inset 0 4px 6px rgba(0, 200, 255, 0.5);
+}
+
+/* Button Groups */
+.form-group {
+    display: flex;
+    gap: 10px;
+}
+
+/* Buttons */
+button {
+    flex: 1;
+    padding: 18px 0;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    color: #fff;
+    background: linear-gradient(135deg, #00c6ff, #dadee4);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.3s ease;
+}
+
+/* Hover Effects */
+button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    background: linear-gradient(135deg, #0072ff, #00c6ff);
+}
+
+/* Equal Button */
+button.equal {
+    background: linear-gradient(135deg, #ff512f, #dd2476);
+}
+
+button.equal:hover {
+    background: linear-gradient(135deg, #dd2476, #ff512f);
+    transform: translateY(-3px) scale(1.05);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(-20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive */
+@media screen and (max-width: 400px) {
+    .calculator {
+        width: 90%;
+        padding: 20px;
+    }
+
+    button {
+        padding: 15px 0;
+        font-size: 1rem;
+    }
+
+    .calculator input[type="text"] {
+        padding: 15px;
+        font-size: 1.2rem;
+    }
+}
+
+    </style>
+</head>
+
+<body>
+    <form class="calculator">
+        <div class="form-group">
+            <input type="text">
+        </div>
+        <div class="form-group">
+            <button type="button" onclick="addvalue('%')">%</button>
+            <button type="button" onclick="clearvalue()">C</button>
+            <button type="button" onclick="deletevalue()">DEL</button>
+            <button type="button" onclick="addvalue('/')">/</button>
+        </div>
+        <div class="form-group">
+            <button type="button" onclick="addvalue('1')">1</button>
+            <button type="button" onclick="addvalue('2')">2</button>
+            <button type="button" onclick="addvalue('3')">3</button>
+            <button type="button" onclick="addvalue('+')">+</button>
+        </div>
+        <div class="form-group">
+            <button type="button" onclick="addvalue('4')">4</button>
+            <button type="button" onclick="addvalue('5')">5</button>
+            <button type="button" onclick="addvalue('6')">6</button>
+            <button type="button" onclick="addvalue('-')">-</button>
+        </div>
+        <div class="form-group">
+            <button type="button" onclick="addvalue('7')">7</button>
+            <button type="button" onclick="addvalue('8')">8</button>
+            <button type="button" onclick="addvalue('9')">9</button>
+            <button type="button" onclick="addvalue('*')">*</button>
+        </div>
+        <div class="form-group">
+            <button type="button" onclick="addvalue('0')">0</button>
+            <button type="button" onclick="addvalue('00')">00</button>
+            <button type="button" onclick="addvalue('.')">.</button>
+            <button type="button" onclick="equalvalue()" class="equal">=</button>
+        </div>
+    </form>
+    <script>
+        let input=document.querySelector("input")
+
+function addvalue(elementval){
+    input.value+=elementval
+}
+function clearvalue(){
+    input.value=""
+}
+function deletevalue(){
+    input.value= input.value.slice(0,input.value.length-1)
+}
+function equalvalue(){
+    input.value= eval(input.value)
+}
+    </script>
+
+</body>
+
+</html>
